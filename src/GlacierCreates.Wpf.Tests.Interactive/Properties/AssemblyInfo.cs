@@ -7,13 +7,13 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GlacierCreates.Wpf.Tests.Interactive")]
+[assembly: AssemblyTitle("GlacierCrates.Wpf.Tests.Interactive")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GlacierCreates.Wpf.Tests.Interactive")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyProduct("GlacierCrates.Wpf.Tests.Interactive")]
+[assembly: AssemblyCopyright("Copyright © 2016 ZoolWay")]
+[assembly: AssemblyTrademark("Apache 2 License")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

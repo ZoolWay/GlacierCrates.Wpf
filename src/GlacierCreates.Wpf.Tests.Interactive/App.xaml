@@ -1,7 +1,8 @@
-﻿<Application x:Class="GlacierCreates.Wpf.Tests.Interactive.App"
+﻿<Application x:Class="GlacierCrates.Wpf.Tests.Interactive.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:GlacierCreates.Wpf.Tests.Interactive"
+             xmlns:local="clr-namespace:GlacierCrates.Wpf.Tests.Interactive"
+             xmlns:l2="clr-namespace:GlacierCrates.Wpf.Tests.Interactive"
              >
     <Application.Resources>
         <ResourceDictionary>

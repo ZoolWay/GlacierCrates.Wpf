@@ -1,4 +1,4 @@
-namespace GlacierCreates.Wpf.Tests.Interactive
+namespace GlacierCrates.Wpf.Tests.Interactive
 {
     using System;
     using System.Collections.Generic;

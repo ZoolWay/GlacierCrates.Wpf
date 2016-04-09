@@ -1,0 +1,32 @@
+﻿<Window x:Class="GlacierCrates.Wpf.Tests.Interactive.Views.TransitingContentControl.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GlacierCrates.Wpf.Tests.Interactive.Views.TransitingContentControl"
+        xmlns:controls="clr-namespace:GlacierCrates.Wpf.Controls;assembly=GlacierCrates.Wpf"
+        mc:Ignorable="d"
+        Height="300" Width="300" Background="Silver">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0,0,0,4" />
+            <Setter Property="Padding" Value="4,2,4,2" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="8" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="8">
+            <Button x:Name="GoToViewA" Content="Go to View A" />
+            <Button x:Name="GoToViewB" Content="Go to View B" />
+            <Button x:Name="ClearView" Content="Clear view" />
+        </StackPanel>
+
+        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="8">
+            <controls:TransitingContentControl x:Name="PresentationView"  />
+        </Border>
+    </Grid>
+</Window>
