@@ -1,9 +1,5 @@
 ﻿using Caliburn.Micro;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GlacierCrates.Wpf.Tests.Interactive.ViewModels.TransitingContentControl
 {
@@ -11,24 +7,32 @@ namespace GlacierCrates.Wpf.Tests.Interactive.ViewModels.TransitingContentContro
     {
         public object PresentationView { get; set; }
 
+        public object PresentationDefView { get; set; }
+
+        public bool IsDoingEffects { get; set; }
+
         public MainViewModel()
         {
             this.DisplayName = "Testing TransitingContentControl";
+            this.IsDoingEffects = true;
         }
 
         public void GoToViewA()
         {
             this.PresentationView = new SampleAViewModel();
+            this.PresentationDefView = new SampleAViewModel();
         }
 
         public void GoToViewB()
         {
             this.PresentationView = new SampleBViewModel();
+            this.PresentationDefView = new SampleBViewModel();
         }
 
         public void ClearView()
         {
             this.PresentationView = null;
+            this.PresentationDefView = null;
         }
     }
 }

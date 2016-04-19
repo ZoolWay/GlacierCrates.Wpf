@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GlacierCrates.Wpf.Tests.Interactive.Views.TransitingContentControl"
         xmlns:controls="clr-namespace:GlacierCrates.Wpf.Controls;assembly=GlacierCrates.Wpf"
+        xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
-        Height="300" Width="300" Background="Silver">
+        WindowStartupLocation="CenterScreen"
+        Height="600" Width="800" Background="Silver">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="0,0,0,4" />
@@ -18,15 +20,28 @@
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0" Orientation="Vertical" Margin="8">
             <Button x:Name="GoToViewA" Content="Go to View A" />
             <Button x:Name="GoToViewB" Content="Go to View B" />
             <Button x:Name="ClearView" Content="Clear view" />
+            <CheckBox x:Name="IsDoingEffects">Effects active</CheckBox>
         </StackPanel>
 
-        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="8">
-            <controls:TransitingContentControl x:Name="PresentationView"  />
+        <Border Grid.Column="1" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Margin="8">
+            <!--
+            <controls:TransitingContentControl x:Name="PresentationView" EnterTransitions="Grow,Fade" ExitTransitions="Slide,Fade" IsTransitingEnabled="{Binding IsDoingEffects}" />
+            <controls:TransContentControl x:Name="PresentationView" cal:View.Model="{Binding PresentationView}" Content="{Binding PresentationView}" EnterTransitions="Slide" ExitTransitions="Slide" IsTransitingEnabled="{Binding IsDoingEffects}" />
+            -->
+            <controls:TransContentControl Content="{Binding PresentationView}" cal:View.Model="{Binding}" EnterTransitions="Slide" ExitTransitions="Slide" IsTransitingEnabled="{Binding IsDoingEffects}" />
+        </Border>
+
+        <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="1" Margin="8">
+            <ContentControl x:Name="PresentationDefView" Content="{Binding PresentationView}" />
         </Border>
     </Grid>
 </Window>

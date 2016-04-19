@@ -4,7 +4,8 @@ namespace GlacierCrates.Wpf.Tests.Interactive
     using System.Collections.Generic;
     using Caliburn.Micro;
     using ViewModels;
-
+    using System.Windows;
+    using System.Windows.Controls;
     public class AppBootstrapper : BootstrapperBase
     {
 
@@ -31,6 +32,21 @@ namespace GlacierCrates.Wpf.Tests.Interactive
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();
             container.PerRequest<IShell, ShellViewModel>();
+
+            //BindingScope.AddChildResolver<Controls.TransContentControl>(e => new[] { e.Content as System.Windows.DependencyObject });
+            /*ConventionManager.AddElementConvention<Controls.TransContentControl>((Controls.TransContentControl.ContentProperty, null, null).ApplyBinding =
+                (viewModelType, path, property, element, convention) =>
+                {
+
+                };*/
+
+            ConventionManager.AddElementConvention<Controls.TransContentControl>(Controls.TransContentControl.ContentProperty, "DataContext", "Loaded").GetBindableProperty =
+            delegate (DependencyObject foundControl) {
+                var element = (Controls.TransContentControl)foundControl;
+                return element.ContentTemplate == null && element.ContentTemplateSelector == null && !(element.Content is DependencyObject)
+                    ? View.ModelProperty
+                    : Controls.TransContentControl.ContentProperty;
+            };
         }
 
         protected override object GetInstance(Type service, string key)
