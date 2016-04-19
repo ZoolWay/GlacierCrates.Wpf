@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="GlacierCrates.Wpf.Controls.TransContentControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GlacierCrates.Wpf.Controls"
+             xmlns:base="clr-namespace:GlacierCrates.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             >
+    <UserControl.Resources>
+        <Storyboard x:Key="slideLeftToRight"  
+            TargetProperty="RenderTransform.(TranslateTransform.X)"
+            AccelerationRatio=".4"
+            DecelerationRatio=".4">
+            <DoubleAnimation Storyboard.TargetName="viewer" Duration="0:0:2.6" From="300" To="0"/>
+        </Storyboard>
+
+        <Storyboard x:Key="slideRightToLeft" 
+            TargetProperty="RenderTransform.(TranslateTransform.X)"
+            AccelerationRatio=".4"
+            DecelerationRatio=".4">
+            <DoubleAnimation Storyboard.TargetName="viewer" Duration="0:0:2.6" From="-300" To="0"/>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid>
+        <ContentControl x:Name="CurrentContent" />
+        <Image Name="PrevImage" Visibility="Collapsed" />
+        <Image Name="NextImage" Visibility="Collapsed" />
+    </Grid>
+</UserControl>

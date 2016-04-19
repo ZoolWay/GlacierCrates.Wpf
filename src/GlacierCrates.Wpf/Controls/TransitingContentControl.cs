@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace GlacierCrates.Wpf.Controls
 {
@@ -38,9 +40,39 @@ namespace GlacierCrates.Wpf.Controls
             var control = d as TransitingContentControl;
             if (control == null) throw new Exception("Invalid object state");
             if (!control.IsTransitingEnabled) return;
+
+            var oldElement = e.OldValue as FrameworkElement;
+            var newElement = e.NewValue as FrameworkElement;
+
+            if (oldElement != null)
+            {
+                var bitmap = RenderBitmap(oldElement);
+            }
+
         }
 
+        private static RenderTargetBitmap RenderBitmap(FrameworkElement element)
+        {
+            double x = 0.0;
+            double y = 0.0;
+            int width = (int)element.ActualWidth;
+            int height = (int)element.ActualHeight;
+            double dpiX = 96;
+            double dpiY = 96;
 
+            PixelFormat pixelFormat = PixelFormats.Default;
+            VisualBrush elementBrush = new VisualBrush(element);
+            DrawingVisual visual = new DrawingVisual();
+            DrawingContext dc = visual.RenderOpen();
+
+            dc.DrawRectangle(elementBrush, null, new Rect(x, y, width, height));
+            dc.Close();
+
+            RenderTargetBitmap bitmap = new RenderTargetBitmap(width, height, dpiX, dpiY, pixelFormat);
+
+            bitmap.Render(visual);
+            return bitmap;
+        }
 
     }
 }
